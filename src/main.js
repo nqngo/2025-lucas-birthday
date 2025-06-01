@@ -27,7 +27,6 @@ document.querySelector('#app').innerHTML = `
       <p class="join-us">JOIN US FOR A</p>
       <p class="dino-spa">DINO SPA PARTY!</p>
       <p class="date-time">MAY 25, 2:00 PM</p>
-      <button class="rsvp-btn">RSVP</button>
       <p class="address">123 MAIN STREET<br />ANYTOWN</p>
       <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
     </div>
@@ -35,6 +34,21 @@ document.querySelector('#app').innerHTML = `
       <img src="${dino3}" class="dino dino-left" alt="Triceratops" />
       <img src="${dino4}" class="dino dino-right" alt="Pterodactyl" />
     </div>
+    <form id="rsvp-form" class="rsvp-form">
+      <h3>RSVP</h3>
+      <div class="form-group">
+        <input type="text" name="name" id="rsvp-name" placeholder="Your Name" required />
+      </div>
+      <div class="form-group">
+        <label for="rsvp-attending" id="attending-label">How many attending? <span id="attending-value">1</span></label>
+        <input type="range" name="attending" id="rsvp-attending" min="1" max="5" value="1" step="1" />
+      </div>
+      <div class="form-group">
+        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number" required pattern="[0-9\-\+\s]+" />
+      </div>
+      <button type="submit" class="rsvp-btn">Send RSVP</button>
+      <div id="rsvp-message" class="rsvp-message"></div>
+    </form>
     <div class="leaf-border bottom">
       <img src="${leaf1}" class="leaf" />
       <img src="${leaf2}" class="leaf" />
@@ -42,4 +56,52 @@ document.querySelector('#app').innerHTML = `
   </div>
 `
 
-setupCounter(document.querySelector('#counter'))
+setupRSVPForm();
+
+function setupRSVPForm() {
+  const form = document.getElementById('rsvp-form');
+  const attendingInput = document.getElementById('rsvp-attending');
+  const attendingValue = document.getElementById('attending-value');
+  if (attendingInput && attendingValue) {
+    attendingValue.textContent = attendingInput.value === '5' ? '5+' : attendingInput.value;
+    attendingInput.addEventListener('input', function () {
+      attendingValue.textContent = this.value === '5' ? '5+' : this.value;
+    });
+  }
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('rsvp-name').value.trim();
+      let attending = document.getElementById('rsvp-attending').value;
+      attending = attending === '5' ? '5+' : attending;
+      const contact = document.getElementById('rsvp-contact').value.trim();
+      const messageDiv = document.getElementById('rsvp-message');
+      messageDiv.textContent = '';
+      if (!name || !attending || !contact) {
+        messageDiv.textContent = 'Please fill in all fields.';
+        messageDiv.style.color = 'red';
+        return;
+      }
+      const endpoint = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, attending, contact })
+        });
+        if (res.ok) {
+          messageDiv.textContent = 'Thank you for your RSVP!';
+          messageDiv.style.color = 'green';
+          form.reset();
+          attendingValue.textContent = '1';
+        } else {
+          messageDiv.textContent = 'There was an error. Please try again later.';
+          messageDiv.style.color = 'red';
+        }
+      } catch (err) {
+        messageDiv.textContent = 'There was an error. Please try again later.';
+        messageDiv.style.color = 'red';
+      }
+    });
+  }
+}

@@ -30,6 +30,7 @@ body {
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin: 2rem auto;
 }
 
 .leaf-border {
@@ -130,4 +131,148 @@ body {
   margin-top: 0.7rem;
   letter-spacing: 1px;
   font-weight: 700;
+}
+
+@media (max-width: 600px) {
+  .invite-container {
+    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+    max-width: 98vw;
+    border-radius: 18px;
+  }
+  .main-title {
+    font-size: 2rem;
+  }
+  .subtitle {
+    font-size: 1rem;
+  }
+  .dino-row {
+    gap: 0.2rem;
+  }
+  .dino {
+    width: 60px;
+  }
+  .leaf {
+    width: 36px;
+  }
+  .rsvp-btn {
+    font-size: 1rem;
+    padding: 0.5em 1.2em;
+  }
+  .features {
+    font-size: 0.95rem;
+  }
+  .address, .date-time, .join-us {
+    font-size: 0.95rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .invite-container {
+    max-width: 90vw;
+    padding: 2rem 1rem 2rem 1rem;
+  }
+}
+
+@media (min-width: 901px) {
+  .invite-container {
+    max-width: 420px;
+  }
+}
+
+.rsvp-form {
+  margin-top: 2rem;
+  background: #f6fbe9;
+  border-radius: 18px;
+  padding: 1.2rem 1rem 1.5rem 1rem;
+  box-shadow: 0 2px 12px rgba(60, 100, 60, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.rsvp-form h3 {
+  margin: 0 0 1rem 0;
+  color: var(--leaf-green);
+  font-size: 1.3rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.form-group {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.rsvp-form input,
+.rsvp-form select {
+  width: 100%;
+  padding: 0.7em 1em;
+  border-radius: 10px;
+  border: 1px solid #cbe3b6;
+  font-size: 1rem;
+  font-family: var(--font-main);
+  margin-top: 0.2rem;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+  transition: border 0.2s;
+}
+.rsvp-form input:focus,
+.rsvp-form select:focus {
+  border: 1.5px solid var(--leaf-green);
+}
+.rsvp-form .rsvp-btn {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+.rsvp-message {
+  margin-top: 0.7rem;
+  font-size: 1rem;
+  min-height: 1.2em;
+}
+@media (max-width: 600px) {
+  .rsvp-form {
+    padding: 0.7rem 0.2rem 1rem 0.2rem;
+    border-radius: 10px;
+  }
+  .rsvp-form h3 {
+    font-size: 1.1rem;
+  }
+  .rsvp-form input,
+  .rsvp-form select {
+    font-size: 0.95rem;
+    padding: 0.5em 0.7em;
+  }
+}
+
+.rsvp-form input[type="range"] {
+  width: 100%;
+  margin-top: 0.5rem;
+  accent-color: var(--leaf-green);
+  height: 2.2em;
+  background: transparent;
+}
+#attending-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+#attending-value {
+  background: var(--leaf-green);
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.1em 0.7em;
+  font-size: 1.1em;
+  font-weight: 700;
+  margin-left: 0.5em;
+}
+@media (max-width: 600px) {
+  #attending-label {
+    font-size: 0.98rem;
+  }
+  #attending-value {
+    font-size: 1em;
+    padding: 0.1em 0.5em;
+  }
 }

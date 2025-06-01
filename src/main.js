@@ -1,27 +1,31 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
+import left1 from './assets/left1_left.png'
+import left2 from './assets/left2_left.png'
+import left3 from './assets/left3_left.png'
+import left4 from './assets/left4_left.png'
+import left2Decor from './assets/left2_decor.png'
+import leaf1Decor from './assets/leaf1_decor.png'
+import dino3 from './assets/dino3_left.png'
+import dino2 from './assets/dino2_right.png'
+import dino4 from './assets/dino4_right.png'
 import { setupCounter } from './counter.js'
 
 // Dino and leaf SVGs (to be added in src/assets/)
-import dino1 from './assets/dino1.svg'
-import dino2 from './assets/dino2.svg'
-import dino3 from './assets/dino3.svg'
-import dino4 from './assets/dino4.svg'
-import leaf1 from './assets/leaf1.svg'
-import leaf2 from './assets/leaf2.svg'
+
 
 document.querySelector('#app').innerHTML = `
   <div class="invite-container">
-    <div class="leaf-border top">
-      <img src="${leaf1}" class="leaf" />
-      <img src="${leaf2}" class="leaf" />
-    </div>
+    <img src="${left1}" class="decor-left decor-left1" alt="Decorative left 1" />
+    <img src="${left2}" class="decor-left decor-left2" alt="Decorative left 2" />
+    <img src="${left3}" class="decor-left decor-left3" alt="Decorative left 3" />
+    <img src="${left4}" class="decor-left decor-left4" alt="Decorative left 4" />
+    <img src="${left2Decor}" class="decor-left decor-left2-decor" alt="Decorative left 2 decor" />
+    <img src="${leaf1Decor}" class="decor-bg" alt="Leaf decor" />
     <h2 class="subtitle">HALEY'S 3RD BIRTHDAY</h2>
     <h1 class="main-title">SPA PARTY</h1>
     <div class="dino-row">
-      <img src="${dino1}" class="dino dino-left" alt="Dino with towel" />
-      <img src="${dino2}" class="dino dino-right" alt="Dino with mask" />
+      <img src="${dino3}" class="dino dino-left" alt="Dino left" />
+      <img src="${dino2}" class="dino dino-right" alt="Dino right" />
     </div>
     <div class="invite-details">
       <p class="join-us">JOIN US FOR A</p>
@@ -31,8 +35,7 @@ document.querySelector('#app').innerHTML = `
       <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
     </div>
     <div class="dino-row bottom">
-      <img src="${dino3}" class="dino dino-left" alt="Triceratops" />
-      <img src="${dino4}" class="dino dino-right" alt="Pterodactyl" />
+      <img src="${dino4}" class="dino dino-left" alt="Triceratops" />
     </div>
     <form id="rsvp-form" class="rsvp-form">
       <h3>RSVP</h3>
@@ -49,10 +52,6 @@ document.querySelector('#app').innerHTML = `
       <button type="submit" class="rsvp-btn">Send RSVP</button>
       <div id="rsvp-message" class="rsvp-message"></div>
     </form>
-    <div class="leaf-border bottom">
-      <img src="${leaf1}" class="leaf" />
-      <img src="${leaf2}" class="leaf" />
-    </div>
   </div>
 `
 

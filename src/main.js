@@ -16,8 +16,6 @@ import dino3 from './assets/dino3_left.png'
 import dino4 from './assets/dino4_right.png'
 import { setupCounter } from './counter.js'
 
-// Dino and leaf SVGs (to be added in src/assets/)
-
 document.body.classList.add('outer-bg');
 document.querySelector('#app').innerHTML = `
   <div class="invite-container">
@@ -45,7 +43,7 @@ document.querySelector('#app').innerHTML = `
       <p class="address">123 MAIN STREET<br />ANYTOWN</p>
       <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
     </div>
-    <div class="dino-row bottom">
+    <div class="dino-row dino-bottom">
       <img src="${dino3}" class="dino dino-left" alt="Dino bottom left" />
       <img src="${dino4}" class="dino dino-right" alt="Dino bottom right" />
     </div>

@@ -71,18 +71,22 @@ body.outer-bg {
 .dino {
   z-index: 3;
   position: relative;
-  width: 110px;
   height: auto;
 }
 .dino-row {
   display: flex;
   justify-content: space-between;
-  margin: 0.5rem 0;
+  margin: 0;
   z-index: 3;
+  align-items: flex-end;
+  position: relative;
 }
-.dino-row.bottom {
-  margin-top: 1.5rem;
-  justify-content: center;
+.dino-row .dino:nth-child(1) { width: 140px; margin-left: 20px;}
+.dino-row .dino:nth-child(2) { width: 135px; margin-right: 20px;}
+.dino-bottom .dino:nth-child(1) { width: 140px; margin-left: -35px; }
+.dino-bottom .dino:nth-child(2) { width: 100px; margin-right: -20px; }
+.dino-bottom {
+  margin-top: 0.5rem;
 }
 
 .leaf-border {
@@ -177,9 +181,9 @@ body.outer-bg {
   .decor-left2 { top: 50px; width: 40px; }
   .decor-left3 { top: 110px; width: 45px; }
   .decor-left4 { top: 180px; width: 50px; }
-  .decor-left2-decor { top: 130px; left: 10px; width: 28px; }
+  .decor-left2-decor { top: 130px; left: 40px; width: 28px; }
   .decor-bg { width: 90px; }
-  .dino { width: 70px; }
+  .dino { width: 100px; }
   .invite-container {
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
     max-width: 98vw;
@@ -207,6 +211,13 @@ body.outer-bg {
   .address, .date-time, .join-us {
     font-size: 0.95rem;
   }
+  .dino-row .dino:nth-child(1) { width: 70px; }
+  .dino-row .dino:nth-child(2) { width: 60px; }
+  .dino-row .dino:nth-child(3) { 
+    width: 100px;
+    left: -25px;
+  }
+  .dino-row .dino:nth-child(4) { width: 65px; }
 }
 
 @media (min-width: 601px) and (max-width: 900px) {

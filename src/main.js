@@ -5,26 +5,37 @@ import left3 from './assets/left3_left.png'
 import left4 from './assets/left4_left.png'
 import left2Decor from './assets/left2_decor.png'
 import leaf1Decor from './assets/leaf1_decor.png'
-import dino3 from './assets/dino3_left.png'
+import fern1 from './assets/fern1_right.png'
+import fern3 from './assets/fern3_right.png'
+import leaf4 from './assets/leaf4_right.png'
+import foot1 from './assets/footsprint1.png'
+import foot2 from './assets/footsprint2.png'
+import dino1 from './assets/dino1_left.png'
 import dino2 from './assets/dino2_right.png'
+import dino3 from './assets/dino3_left.png'
 import dino4 from './assets/dino4_right.png'
 import { setupCounter } from './counter.js'
 
 // Dino and leaf SVGs (to be added in src/assets/)
 
-
+document.body.classList.add('outer-bg');
 document.querySelector('#app').innerHTML = `
   <div class="invite-container">
-    <img src="${left1}" class="decor-left decor-left1" alt="Decorative left 1" />
-    <img src="${left2}" class="decor-left decor-left2" alt="Decorative left 2" />
-    <img src="${left3}" class="decor-left decor-left3" alt="Decorative left 3" />
-    <img src="${left4}" class="decor-left decor-left4" alt="Decorative left 4" />
-    <img src="${left2Decor}" class="decor-left decor-left2-decor" alt="Decorative left 2 decor" />
-    <img src="${leaf1Decor}" class="decor-bg" alt="Leaf decor" />
+    <img src="${left1}" class="decor decor-left1" alt="Decorative left 1" />
+    <img src="${left2}" class="decor decor-left2" alt="Decorative left 2" />
+    <img src="${left3}" class="decor decor-left3" alt="Decorative left 3" />
+    <img src="${left4}" class="decor decor-left4" alt="Decorative left 4" />
+    <img src="${left2Decor}" class="decor decor-left2-decor" alt="Decorative left 2 decor" />
+    <img src="${leaf1Decor}" class="decor decor-bg1" alt="Leaf decor" />
+    <img src="${fern1}" class="decor decor-fern1" alt="Fern right 1" />
+    <img src="${fern3}" class="decor decor-fern3" alt="Fern right 3" />
+    <img src="${leaf4}" class="decor decor-leaf4" alt="Leaf right 4" />
+    <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />
+    <img src="${foot2}" class="decor decor-foot2" alt="Footprint 2" />
     <h2 class="subtitle">HALEY'S 3RD BIRTHDAY</h2>
     <h1 class="main-title">SPA PARTY</h1>
     <div class="dino-row">
-      <img src="${dino3}" class="dino dino-left" alt="Dino left" />
+      <img src="${dino1}" class="dino dino-left" alt="Dino left" />
       <img src="${dino2}" class="dino dino-right" alt="Dino right" />
     </div>
     <div class="invite-details">
@@ -35,7 +46,8 @@ document.querySelector('#app').innerHTML = `
       <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
     </div>
     <div class="dino-row bottom">
-      <img src="${dino4}" class="dino dino-left" alt="Triceratops" />
+      <img src="${dino3}" class="dino dino-left" alt="Dino bottom left" />
+      <img src="${dino4}" class="dino dino-right" alt="Dino bottom right" />
     </div>
     <form id="rsvp-form" class="rsvp-form">
       <h3>RSVP</h3>

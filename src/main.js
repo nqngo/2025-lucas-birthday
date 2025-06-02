@@ -97,9 +97,9 @@ function setupRSVPForm() {
       try {
         // Use FormData to avoid CORS preflight issues
         const formData = new FormData();
-        formData.append('name', name);
-        formData.append('attending', attending);
-        formData.append('contact', contact);
+        formData.append('Name', name);
+        formData.append('Attending', attending);
+        formData.append('Contact', contact);
         
         const res = await fetch(endpoint, {
           method: 'POST',

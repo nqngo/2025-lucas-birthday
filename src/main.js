@@ -30,6 +30,7 @@ document.querySelector('#app').innerHTML = `
     <img src="${leaf4}" class="decor decor-leaf4" alt="Leaf right 4" />
     <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />
     <img src="${foot2}" class="decor decor-foot2" alt="Footprint 2" />
+    <img src="${foot1}" class="decor decor-foot3" alt="Footprint 3" />
     <h2 class="subtitle">HALEY'S 3RD BIRTHDAY</h2>
     <h1 class="main-title">SPA PARTY</h1>
     <div class="dino-row">

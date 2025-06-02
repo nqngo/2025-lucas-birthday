@@ -344,6 +344,10 @@ body.outer-bg {
 
 /* Mobile (600px and below) */
 @media (max-width: 600px) {
+  body {
+    display: block;
+  }
+
   /* Modal responsiveness */
   .modal-content {
     width: 95%;
@@ -360,10 +364,10 @@ body.outer-bg {
 
   /* Container and layout */
   .invite-container {
-    width: 100%;
-    margin: 1rem;
+    width: 85%;
+    margin: 1rem auto;
     padding: 1rem;
-    max-width: 600px;
+    max-width: 100%;
     border-radius: 18px;
   }
 

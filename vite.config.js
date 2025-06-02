@@ -8,7 +8,7 @@ export default defineConfig(({ command }) => {
   }
   
   if (command === 'build') {
-    config.base = '/2025-lucas-birthday/'
+    config.base = '/2025-birthday/'
   }
   
   return config

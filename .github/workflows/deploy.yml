@@ -27,8 +27,8 @@ jobs:
       run: npm run build
       env:
         VITE_CHILD_NAME: ${{ secrets.VITE_CHILD_NAME }}
-        VITE_BIRTHDAY_TYPE: ${{ vars.VITE_BIRTHDAY_TYPE }}
         VITE_EVENT_DATE: ${{ vars.VITE_EVENT_DATE }}
+        VITE_EVENT_DATE_VI: ${{ vars.VITE_EVENT_DATE_VI }}
         VITE_ADDRESS_LINE1: ${{ secrets.VITE_ADDRESS_LINE1 }}
         VITE_ADDRESS_LINE2: ${{ secrets.VITE_ADDRESS_LINE2 }}
         VITE_RSVP_ENDPOINT: ${{ vars.VITE_RSVP_ENDPOINT }}

@@ -103,17 +103,15 @@ function setupRSVPForm() {
         
         const res = await fetch(endpoint, {
           method: 'POST',
+          mode: 'no-cors',
           body: formData
         });
-        if (res.ok) {
-          messageDiv.textContent = 'Thank you for your RSVP!';
-          messageDiv.style.color = 'green';
-          form.reset();
-          attendingValue.textContent = '1';
-        } else {
-          messageDiv.textContent = 'There was an error. Please try again later.';
-          messageDiv.style.color = 'red';
-        }
+        
+        // With no-cors mode, we can't read the response, but if no error is thrown, assume success
+        messageDiv.textContent = 'Thank you for your RSVP!';
+        messageDiv.style.color = 'green';
+        form.reset();
+        attendingValue.textContent = '1';
       } catch (err) {
         messageDiv.textContent = 'There was an error. Please try again later.';
         messageDiv.style.color = 'red';

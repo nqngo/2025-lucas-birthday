@@ -51,14 +51,14 @@ document.querySelector('#app').innerHTML = `
     <form id="rsvp-form" class="rsvp-form">
       <h3>RSVP</h3>
       <div class="form-group">
-        <input type="text" name="name" id="rsvp-name" placeholder="Your Name" required />
+        <input type="text" name="name" id="rsvp-name" placeholder="Your Name*" required />
       </div>
       <div class="form-group">
         <label for="rsvp-attending" id="attending-label">How many attending? <span id="attending-value">1</span></label>
         <input type="range" name="attending" id="rsvp-attending" min="1" max="5" value="1" step="1" />
       </div>
       <div class="form-group">
-        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number" required pattern="[0-9\-\+\s]+" />
+        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number*" required" />
       </div>
       <button type="submit" class="rsvp-btn">Send RSVP</button>
       <div id="rsvp-message" class="rsvp-message"></div>
@@ -93,6 +93,7 @@ function setupRSVPForm() {
         return;
       }
       const endpoint = import.meta.env.VITE_RSVP_ENDPOINT;
+      console.log(`RSVP Endpoint: ${endpoint}`);
       try {
         const res = await fetch(endpoint, {
           method: 'POST',

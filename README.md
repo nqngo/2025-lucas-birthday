@@ -1,6 +1,21 @@
 # RSVP Dino SPA
 
-A Vite-powered single page application with a dinosaur theme.
+A Vite-powered single page application with a dinosaur theme for birthday party invitations.
+
+## Setup
+
+1. Clone the repository
+2. Copy `.env.example` to `.env` and update with your party details:
+   ```bash
+   cp .env.example .env
+   ```
+3. Edit `.env` file with your party information:
+   - `VITE_CHILD_NAME`: Child's name
+   - `VITE_BIRTHDAY_TYPE`: Type of party (e.g., "SPA PARTY")
+   - `VITE_EVENT_DATE`: Date and time of the event
+   - `VITE_ADDRESS_LINE1`: First line of address
+   - `VITE_ADDRESS_LINE2`: Second line of address
+   - `VITE_RSVP_ENDPOINT`: Google Apps Script Web App URL for RSVP submissions
 
 ## Development
 

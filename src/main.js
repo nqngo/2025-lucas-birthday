@@ -31,8 +31,8 @@ document.querySelector('#app').innerHTML = `
     <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />
     <img src="${foot2}" class="decor decor-foot2" alt="Footprint 2" />
     <img src="${foot1}" class="decor decor-foot3" alt="Footprint 3" />
-    <h2 class="subtitle">HALEY'S 3RD BIRTHDAY</h2>
-    <h1 class="main-title">SPA PARTY</h1>
+    <h2 class="subtitle">${import.meta.env.VITE_CHILD_NAME}'S 3RD BIRTHDAY</h2>
+    <h1 class="main-title">${import.meta.env.VITE_BIRTHDAY_TYPE}</h1>
     <div class="dino-row">
       <img src="${dino1}" class="dino dino-left" alt="Dino left" />
       <img src="${dino2}" class="dino dino-right" alt="Dino right" />
@@ -40,8 +40,8 @@ document.querySelector('#app').innerHTML = `
     <div class="invite-details">
       <p class="join-us">JOIN US FOR A</p>
       <p class="dino-spa">DINO SPA PARTY!</p>
-      <p class="date-time">MAY 25, 2:00 PM</p>
-      <p class="address">123 MAIN STREET<br />ANYTOWN</p>
+      <p class="date-time">${import.meta.env.VITE_EVENT_DATE}</p>
+      <p class="address">${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}</p>
       <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
     </div>
     <div class="dino-row dino-bottom">
@@ -92,7 +92,7 @@ function setupRSVPForm() {
         messageDiv.style.color = 'red';
         return;
       }
-      const endpoint = 'YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL';
+      const endpoint = import.meta.env.VITE_RSVP_ENDPOINT;
       try {
         const res = await fetch(endpoint, {
           method: 'POST',

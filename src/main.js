@@ -39,10 +39,10 @@ document.querySelector('#app').innerHTML = `
     </div>
     <div class="invite-details">
       <p class="join-us">JOIN US FOR A</p>
-      <p class="dino-spa">DINO SPA PARTY!</p>
+      <p class="dino-spa">AMAZING DAY AT</p>
       <p class="date-time">${import.meta.env.VITE_EVENT_DATE}</p>
       <p class="address">${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}</p>
-      <div class="features">SPA TREATMENTS &bull; GAMES &bull; FUN</div>
+      <div class="features">FOOD &bull; GAMES &bull; FUN</div>
     </div>
     <div class="dino-row dino-bottom">
       <img src="${dino3}" class="dino dino-left" alt="Dino bottom left" />

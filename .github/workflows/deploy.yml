@@ -25,6 +25,13 @@ jobs:
       
     - name: Build
       run: npm run build
+      env:
+        VITE_CHILD_NAME: ${{ secrets.VITE_CHILD_NAME }}
+        VITE_BIRTHDAY_TYPE: ${{ secrets.VITE_BIRTHDAY_TYPE }}
+        VITE_EVENT_DATE: ${{ secrets.VITE_EVENT_DATE }}
+        VITE_ADDRESS_LINE1: ${{ secrets.VITE_ADDRESS_LINE1 }}
+        VITE_ADDRESS_LINE2: ${{ secrets.VITE_ADDRESS_LINE2 }}
+        VITE_RSVP_ENDPOINT: ${{ secrets.VITE_RSVP_ENDPOINT }}
       
     - name: Setup Pages
       uses: actions/configure-pages@v4

@@ -95,10 +95,15 @@ function setupRSVPForm() {
       const endpoint = import.meta.env.VITE_RSVP_ENDPOINT;
       console.log(`RSVP Endpoint: ${endpoint}`);
       try {
+        // Use FormData to avoid CORS preflight issues
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('attending', attending);
+        formData.append('contact', contact);
+        
         const res = await fetch(endpoint, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ name, attending, contact })
+          body: formData
         });
         if (res.ok) {
           messageDiv.textContent = 'Thank you for your RSVP!';

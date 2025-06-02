@@ -371,6 +371,14 @@ body.outer-bg {
     border-radius: 18px;
   }
 
+  /* Language switcher mobile */
+  .language-switcher {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
   /* Decorations */
   .decor-left1 { top: 5px; width: 36px; }
   .decor-left2 { top: 90px; width: 40px; }
@@ -445,6 +453,32 @@ body.outer-bg {
     font-size: 1em;
     padding: 0.1em 0.6em;
   }
+}
+
+/* Language Switcher */
+.language-switcher {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: var(--font-main);
+  box-shadow: 0 2px 8px rgba(60, 100, 60, 0.15);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.language-switcher:hover {
+  background: var(--leaf-green);
+  color: var(--accent);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(60, 100, 60, 0.25);
 }
 
 .rsvp-form {

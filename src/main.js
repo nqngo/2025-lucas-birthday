@@ -1,4 +1,5 @@
 import './style.css'
+import { initLanguage, setLanguage, getCurrentLanguage, getText, getEventDate, updateContent } from './lang.js'
 import left1 from './assets/left1_left.png'
 import left2 from './assets/left2_left.png'
 import left3 from './assets/left3_left.png'
@@ -15,9 +16,15 @@ import dino2 from './assets/dino2_right.png'
 import dino3 from './assets/dino3_left.png'
 import dino4 from './assets/dino4_right.png'
 
+// Initialize language system
+initLanguage();
+
 document.body.classList.add('outer-bg');
 document.querySelector('#app').innerHTML = `
   <div class="invite-container">
+    <!-- Language Switcher -->
+    <button id="language-switcher" class="language-switcher">${getText('switchLanguage')}</button>
+
     <img src="${left1}" class="decor decor-left1" alt="Decorative left 1" />
     <img src="${left2}" class="decor decor-left2" alt="Decorative left 2" />
     <img src="${left3}" class="decor decor-left3" alt="Decorative left 3" />
@@ -32,36 +39,36 @@ document.querySelector('#app').innerHTML = `
     <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />
     <img src="${foot2}" class="decor decor-foot2" alt="Footprint 2" />
     <img src="${foot1}" class="decor decor-foot3" alt="Footprint 3" />
-    <h2 class="subtitle">${import.meta.env.VITE_CHILD_NAME}'S 4TH BIRTHDAY</h2>
-    <h1 class="main-title">${import.meta.env.VITE_BIRTHDAY_TYPE}</h1>
+    <h2 class="subtitle">${getText('subtitle', { childName: import.meta.env.VITE_CHILD_NAME })}</h2>
+    <h1 class="main-title">${getText('mainTitle')}</h1>
     <div class="dino-row">
       <img src="${dino1}" class="dino dino-left" alt="Dino left" />
       <img src="${dino2}" class="dino dino-right" alt="Dino right" />
     </div>
     <div class="invite-details">
-      <p class="join-us">JOIN US FOR A</p>
-      <p class="dino-spa">AMAZING DAY ON</p>
-      <p class="date-time">${import.meta.env.VITE_EVENT_DATE}</p>
+      <p class="join-us">${getText('joinUs')}</p>
+      <p class="dino-spa">${getText('amazingDay')}</p>
+      <p class="date-time">${getEventDate()}</p>
       <p class="address">${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}</p>
-      <div class="features">FOOD &bull; GAMES &bull; FUN</div>
+      <div class="features">${getText('features')}</div>
     </div>
     <div class="dino-row dino-bottom">
       <img src="${dino3}" class="dino dino-left" alt="Dino bottom left" />
       <img src="${dino4}" class="dino dino-right" alt="Dino bottom right" />
     </div>
     <form id="rsvp-form" class="rsvp-form">
-      <h3>RSVP</h3>
+      <h3>${getText('rsvp')}</h3>
       <div class="form-group">
-        <input type="text" name="name" id="rsvp-name" placeholder="Your Name*" required />
+        <input type="text" name="name" id="rsvp-name" placeholder="${getText('yourName')}" required />
       </div>
       <div class="form-group">
-        <label for="rsvp-attending" id="attending-label">How many attending? <span id="attending-value">1</span></label>
+        <label for="rsvp-attending" id="attending-label">${getText('howMany')} <span id="attending-value">1</span></label>
         <input type="range" name="attending" id="rsvp-attending" min="1" max="5" value="1" step="1" />
       </div>
       <div class="form-group">
-        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number*" required />
+        <input type="tel" name="contact" id="rsvp-contact" placeholder="${getText('contactNumber')}" required />
       </div>
-      <button type="submit" class="rsvp-btn">Send RSVP</button>
+      <button type="submit" class="rsvp-btn">${getText('sendRsvp')}</button>
       <div id="rsvp-message" class="rsvp-message"></div>
     </form>
   </div>
@@ -70,21 +77,33 @@ document.querySelector('#app').innerHTML = `
   <div id="success-modal" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>🦕 Thank You! 🦕</h2>
+        <h2>${getText('modalTitle')}</h2>
       </div>
       <div class="modal-body">
-        <p>Your RSVP has been received!</p>
-        <p>We can't wait to see you at Lucas's Dino Party!</p>
+        <p>${getText('modalMessage1')}</p>
+        <p>${getText('modalMessage2', { childName: import.meta.env.VITE_CHILD_NAME })}</p>
       </div>
       <div class="modal-footer">
-        <button id="close-modal" class="modal-close-btn">Close</button>
+        <button id="close-modal" class="modal-close-btn">${getText('modalClose')}</button>
       </div>
     </div>
   </div>
 `
 
+setupLanguageSwitcher();
 setupRSVPForm();
 setupModal();
+
+function setupLanguageSwitcher() {
+  const switcher = document.getElementById('language-switcher');
+  if (switcher) {
+    switcher.addEventListener('click', () => {
+      const currentLang = getCurrentLanguage();
+      const newLang = currentLang === 'en' ? 'vi' : 'en';
+      setLanguage(newLang);
+    });
+  }
+}
 
 function showSuccessModal() {
   const modal = document.getElementById('success-modal');
@@ -138,7 +157,7 @@ function setupRSVPForm() {
       const messageDiv = document.getElementById('rsvp-message');
       messageDiv.textContent = '';
       if (!name || !attending || !contact) {
-        messageDiv.textContent = 'Please fill in all fields.';
+        messageDiv.textContent = getText('fillAllFields');
         messageDiv.style.color = 'red';
         return;
       }
@@ -162,7 +181,7 @@ function setupRSVPForm() {
         form.reset();
         attendingValue.textContent = '1';
       } catch (err) {
-        messageDiv.textContent = 'There was an error. Please try again later.';
+        messageDiv.textContent = getText('errorMessage');
         messageDiv.style.color = 'red';
       }
     });

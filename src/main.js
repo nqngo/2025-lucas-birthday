@@ -14,7 +14,6 @@ import dino1 from './assets/dino1_left.png'
 import dino2 from './assets/dino2_right.png'
 import dino3 from './assets/dino3_left.png'
 import dino4 from './assets/dino4_right.png'
-import { setupCounter } from './counter.js'
 
 document.body.classList.add('outer-bg');
 document.querySelector('#app').innerHTML = `
@@ -31,7 +30,7 @@ document.querySelector('#app').innerHTML = `
     <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />
     <img src="${foot2}" class="decor decor-foot2" alt="Footprint 2" />
     <img src="${foot1}" class="decor decor-foot3" alt="Footprint 3" />
-    <h2 class="subtitle">${import.meta.env.VITE_CHILD_NAME}'S 3RD BIRTHDAY</h2>
+    <h2 class="subtitle">${import.meta.env.VITE_CHILD_NAME}'S 4TH BIRTHDAY</h2>
     <h1 class="main-title">${import.meta.env.VITE_BIRTHDAY_TYPE}</h1>
     <div class="dino-row">
       <img src="${dino1}" class="dino dino-left" alt="Dino left" />
@@ -39,7 +38,7 @@ document.querySelector('#app').innerHTML = `
     </div>
     <div class="invite-details">
       <p class="join-us">JOIN US FOR A</p>
-      <p class="dino-spa">AMAZING DAY AT</p>
+      <p class="dino-spa">AMAZING DAY ON</p>
       <p class="date-time">${import.meta.env.VITE_EVENT_DATE}</p>
       <p class="address">${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}</p>
       <div class="features">FOOD &bull; GAMES &bull; FUN</div>
@@ -58,15 +57,64 @@ document.querySelector('#app').innerHTML = `
         <input type="range" name="attending" id="rsvp-attending" min="1" max="5" value="1" step="1" />
       </div>
       <div class="form-group">
-        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number*" required" />
+        <input type="tel" name="contact" id="rsvp-contact" placeholder="Best Contact Number*" required />
       </div>
       <button type="submit" class="rsvp-btn">Send RSVP</button>
       <div id="rsvp-message" class="rsvp-message"></div>
     </form>
   </div>
+
+  <!-- Success Modal -->
+  <div id="success-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🦕 Thank You! 🦕</h2>
+      </div>
+      <div class="modal-body">
+        <p>Your RSVP has been received!</p>
+        <p>We can't wait to see you at Lucas's Dino Party!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="close-modal" class="modal-close-btn">Close</button>
+      </div>
+    </div>
+  </div>
 `
 
 setupRSVPForm();
+setupModal();
+
+function showSuccessModal() {
+  const modal = document.getElementById('success-modal');
+  modal.classList.add('show');
+}
+
+function hideSuccessModal() {
+  const modal = document.getElementById('success-modal');
+  modal.classList.remove('show');
+}
+
+function setupModal() {
+  const modal = document.getElementById('success-modal');
+  const closeBtn = document.getElementById('close-modal');
+
+  // Close modal when close button is clicked
+  closeBtn.addEventListener('click', hideSuccessModal);
+
+  // Close modal when clicking outside of it
+  modal.addEventListener('click', function(e) {
+    if (e.target === modal) {
+      hideSuccessModal();
+    }
+  });
+
+  // Close modal with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && modal.classList.contains('show')) {
+      hideSuccessModal();
+    }
+  });
+}
 
 function setupRSVPForm() {
   const form = document.getElementById('rsvp-form');
@@ -106,10 +154,9 @@ function setupRSVPForm() {
           mode: 'no-cors',
           body: formData
         });
-        
+
         // With no-cors mode, we can't read the response, but if no error is thrown, assume success
-        messageDiv.textContent = 'Thank you for your RSVP!';
-        messageDiv.style.color = 'green';
+        showSuccessModal();
         form.reset();
         attendingValue.textContent = '1';
       } catch (err) {

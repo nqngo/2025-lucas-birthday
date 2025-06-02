@@ -42,13 +42,14 @@ body.outer-bg {
 .decor-left1 { left: 0; top: 10px; width: 60px; }
 .decor-left2 { left: 0; top: 120px; width: 70px; }
 .decor-left3 { left: 0; top: 380px; width: 80px; }
-.decor-left4 { left: 0; top: 700px; width: 90px; }
-.decor-left2-decor { left: 45%; top: 220px; width: 50px; opacity: 0.7; }
+.decor-left1-2 { left: 0; top: 650px; width: 70px; opacity: 0.8; }
+.decor-left4 { left: 0; top: 900px; width: 90px; }
+.decor-left2-decor { left: 45%; top: 240px; width: 50px; opacity: 0.7; }
 
 /* Background decoration */
 .decor-bg1 { 
   left: 50%;
-  top: 50%; 
+  top: 57%; 
   width: 60px; 
   max-width: 60vw; 
   transform: translate(-50%, -50%); 
@@ -58,13 +59,14 @@ body.outer-bg {
 
 /* Right side decorations */
 .decor-fern1 { right: 0; top: 40px; width: 70px; }
+.decor-fern2 { right: -10px; top: 500px; opacity: 0.6; transform: scaleX(-1); }
 .decor-fern3 { right: 0; top: 200px; width: 80px; }
 .decor-leaf4 { right: 0; bottom: 40px; width: 60px; }
 
 /* Footprint decorations */
 .decor-foot1 { left: 60px; bottom: 30px; width: 40px; opacity: 0.5; }
 .decor-foot2 { right: 60px; top: 120px; width: 38px; opacity: 0.5; }
-.decor-foot3 { right: 80px; top: 400px; width: 42px; opacity: 0.5; }
+.decor-foot3 { right: 120px; top: 670px; width: 42px; opacity: 0.5; }
 .invite-container {
   position: relative;
   z-index: 2;
@@ -72,7 +74,7 @@ body.outer-bg {
   border-radius: 32px;
   box-shadow: 0 4px 32px rgba(60, 100, 60, 0.12);
   padding: 2.5rem 2rem 2rem 2rem;
-  max-width: 480px;
+  max-width: 1080px;
   width: 100%;
   text-align: center;
   margin: 2rem auto;
@@ -178,7 +180,7 @@ body.outer-bg {
 }
 .features {
   color: var(--leaf-green);
-  font-size: 1rem;
+  font-size: 2rem;
   margin-top: 0.7rem;
   letter-spacing: 1px;
   font-weight: 700;
@@ -308,6 +310,12 @@ body.outer-bg {
 }
 
 @media (max-width: 600px) {
+  .invite-container {
+    width: 95%;
+    margin: 1rem auto;
+    padding: 2rem 1.5rem 1.5rem 1.5rem;
+  }
+  
   .decor-left1 { top: 5px; width: 36px; }
   .decor-left2 { top: 90px; width: 40px; }
   .decor-left3 { top: 310px; width: 80px; }
@@ -354,15 +362,61 @@ body.outer-bg {
 
 @media (min-width: 601px) and (max-width: 900px) {
   .invite-container {
-    max-width: 640px;
-    padding: 2rem 1rem 2rem 1rem;
+    max-width: 720px;
+    width: 100%;
+    padding: 3rem 2.5rem 2.5rem 2.5rem;
   }
+  
+  .main-title { font-size: 3.2rem; }
+  .subtitle { font-size: 1.4rem; }
+  .dino-spa { font-size: 1.7rem; }
+  .address, .date-time {
+    font-size: 1.6rem;
+  }
+  
+  .decor-foot3 { top: 690px; }
+
+  .dino-row .dino:nth-child(1) { width: 160px; margin-left: 25px;}
+  .dino-row .dino:nth-child(2) { width: 155px; margin-right: 25px;}
+  .dino-bottom .dino:nth-child(1) { width: 160px; margin-left: -30px; }
+  .dino-bottom .dino:nth-child(2) { width: 120px; margin-right: -15px; }
 }
 
 @media (min-width: 901px) {
   .invite-container {
-    max-width: 920px;
+    max-width: 980px;
+    width: 100%;
+    padding: 3.5rem 3rem 3rem 3rem;
   }
+  
+  .main-title {
+    font-size: 3.6rem;
+  }
+  
+  .subtitle {
+    font-size: 1.5rem;
+  }
+  
+  .dino-spa {
+    font-size: 1.8rem;
+  }
+  
+  .join-us {
+    font-size: 1.2rem;
+  }
+  
+  .date-time {
+    font-size: 1.4rem;
+  }
+  
+  .address {
+    font-size: 1.2rem;
+  }
+  
+  .dino-row .dino:nth-child(1) { width: 180px; margin-left: 30px;}
+  .dino-row .dino:nth-child(2) { width: 175px; margin-right: 30px;}
+  .dino-bottom .dino:nth-child(1) { width: 180px; margin-left: -50px; }
+  .dino-bottom .dino:nth-child(2) { width: 140px; margin-right: -10px; }
 }
 
 .rsvp-form {
@@ -453,6 +507,7 @@ body.outer-bg {
   font-weight: 700;
   margin-left: 0.5em;
 }
+
 @media (max-width: 600px) {
   #attending-label {
     font-size: 0.98rem;

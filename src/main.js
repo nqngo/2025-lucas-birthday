@@ -21,10 +21,12 @@ document.querySelector('#app').innerHTML = `
     <img src="${left1}" class="decor decor-left1" alt="Decorative left 1" />
     <img src="${left2}" class="decor decor-left2" alt="Decorative left 2" />
     <img src="${left3}" class="decor decor-left3" alt="Decorative left 3" />
+    <img src="${left1}" class="decor decor-left1-2" alt="Decorative left 1 decor" />
     <img src="${left4}" class="decor decor-left4" alt="Decorative left 4" />
     <img src="${left2Decor}" class="decor decor-left2-decor" alt="Decorative left 2 decor" />
     <img src="${leaf1Decor}" class="decor decor-bg1" alt="Leaf decor" />
     <img src="${fern1}" class="decor decor-fern1" alt="Fern right 1" />
+    <img src="${left3}" class="decor decor-fern2" alt="Fern right 2" />
     <img src="${fern3}" class="decor decor-fern3" alt="Fern right 3" />
     <img src="${leaf4}" class="decor decor-leaf4" alt="Leaf right 4" />
     <img src="${foot1}" class="decor decor-foot1" alt="Footprint 1" />

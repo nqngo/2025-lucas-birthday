@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "npm run build && gh-pages -d dist",
-    "deploy-custom": "npm run build && echo 'lucas.ngo.cx' > dist/CNAME && gh-pages -d dist -r https://github.com/yourusername/yourrepo.git"
+    "deploy": "npm run build && gh-pages -d dist"
   },
   "devDependencies": {
     "gh-pages": "^6.3.0",

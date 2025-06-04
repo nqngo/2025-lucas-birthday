@@ -113,6 +113,11 @@ function showSuccessModal() {
 function hideSuccessModal() {
   const modal = document.getElementById('success-modal');
   modal.classList.remove('show');
+  // Re-enable the submit button when modal is closed
+  const submitButton = document.querySelector('.rsvp-btn');
+  if (submitButton) {
+    submitButton.disabled = false;
+  }
 }
 
 function setupModal() {
@@ -141,6 +146,8 @@ function setupRSVPForm() {
   const form = document.getElementById('rsvp-form');
   const attendingInput = document.getElementById('rsvp-attending');
   const attendingValue = document.getElementById('attending-value');
+  const submitButton = form.querySelector('.rsvp-btn');
+  
   if (attendingInput && attendingValue) {
     attendingValue.textContent = attendingInput.value === '5' ? '5+' : attendingInput.value;
     attendingInput.addEventListener('input', function () {
@@ -150,6 +157,9 @@ function setupRSVPForm() {
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
+      // Disable submit button immediately
+      submitButton.disabled = true;
+      
       const name = document.getElementById('rsvp-name').value.trim();
       let attending = document.getElementById('rsvp-attending').value;
       attending = attending === '5' ? '5+' : attending;
@@ -159,6 +169,7 @@ function setupRSVPForm() {
       if (!name || !attending || !contact) {
         messageDiv.textContent = getText('fillAllFields');
         messageDiv.style.color = 'red';
+        submitButton.disabled = false; // Re-enable if validation fails
         return;
       }
       const endpoint = import.meta.env.VITE_RSVP_ENDPOINT;
@@ -183,6 +194,7 @@ function setupRSVPForm() {
       } catch (err) {
         messageDiv.textContent = getText('errorMessage');
         messageDiv.style.color = 'red';
+        submitButton.disabled = false; // Re-enable if there's an error
       }
     });
   }

@@ -386,9 +386,9 @@ body.outer-bg {
   .decor-left4 { top: 720px; width: 50px; }
   .decor-left1-2 { top: 900px; width: 40px; opacity: 0.8; }
   .decor-left2-decor { top: 130px; left: 45%; width: 28px; }
-  .decor-fern1 { top: 20px; width: 50px; }
-  .decor-fern2 { top: 640px; width: 50px; }
-  .decor-fern3 { top: 300px; width: 60px; }
+  .decor-fern1 { top: 60px; width: 50px; }
+  .decor-fern2 { top: 680px; width: 50px; }
+  .decor-fern3 { bottom: 300px; width: 60px; }
   .decor-leaf4 { right: 0; bottom: 0; width: 60px; }
   .decor-foot3 { right: 20px; top: 480px; width: 32px; }
   .decor-bg1 { width: 30px; }
@@ -398,6 +398,7 @@ body.outer-bg {
     font-size: 2.2rem;
   }
   .subtitle {
+    margin-top: 40px;
     font-size: 1.05rem;
   }
   .dino-spa {

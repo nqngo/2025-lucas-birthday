@@ -6,6 +6,7 @@ export const languages = {
     joinUs: "JOIN US FOR A",
     amazingDay: "AMAZING DAY ON",
     features: "FOOD • GAMES • FUN",
+    addToCalendar: "Add to Calendar",
     rsvp: "RSVP",
     yourName: "Your Name*",
     howMany: "How many attending?",
@@ -25,6 +26,7 @@ export const languages = {
     joinUs: "THAM GIA CÙNG GIA ĐÌNH",
     amazingDay: "VÀO",
     features: "ĂN UỐNG • TRÒ CHƠI",
+    addToCalendar: "Thêm vào Lịch",
     rsvp: "ĐĂNG KÝ THAM DỰ",
     yourName: "Tên*",
     howMany: "Số lượng người đi?",
@@ -93,6 +95,7 @@ export function updateContent() {
   const amazingDay = document.querySelector('.dino-spa');
   const dateTime = document.querySelector('.date-time');
   const features = document.querySelector('.features');
+  const calendarLink = document.querySelector('.calendar-link');
   const rsvpTitle = document.querySelector('.rsvp-form h3');
   const nameInput = document.querySelector('#rsvp-name');
   const attendingLabel = document.querySelector('#attending-label');
@@ -110,6 +113,7 @@ export function updateContent() {
   if (amazingDay) amazingDay.textContent = getText('amazingDay');
   if (dateTime) dateTime.textContent = eventDate;
   if (features) features.textContent = getText('features');
+  if (calendarLink) calendarLink.textContent = `📅 ${getText('addToCalendar')}`;
   if (rsvpTitle) rsvpTitle.textContent = getText('rsvp');
   if (nameInput) nameInput.placeholder = getText('yourName');
   if (attendingLabel) {

@@ -1,5 +1,50 @@
 import './style.css'
 import { initLanguage, setLanguage, getCurrentLanguage, getText, getEventDate, updateContent } from './lang.js'
+
+// Helper functions for links
+function createGoogleMapsLink(address) {
+  const encodedAddress = encodeURIComponent(address);
+  return `https://www.google.com/maps/search/?api=1&query=${encodedAddress}`;
+}
+
+function createGoogleCalendarLink() {
+  const childName = import.meta.env.VITE_CHILD_NAME || 'LUCAS';
+  const birthdayType = import.meta.env.VITE_BIRTHDAY_TYPE || 'DINO PARTY';
+  const address = `${import.meta.env.VITE_ADDRESS_LINE1}, ${import.meta.env.VITE_ADDRESS_LINE2}`;
+  
+  // Parse the event date - "SUNDAY JULY 06, 12:00 PM"
+  const eventDateStr = import.meta.env.VITE_EVENT_DATE || '';
+  const currentYear = new Date().getFullYear();
+  
+  // Extract date and time from the format "SUNDAY JULY 06, 12:00 PM"
+  const dateTimeMatch = eventDateStr.match(/(\w+)\s+(\w+)\s+(\d{1,2}),?\s+(\d{1,2}):(\d{2})\s+(AM|PM)/i);
+  
+  let startDate, endDate;
+  if (dateTimeMatch) {
+    const [, , month, day, hour, minute, ampm] = dateTimeMatch;
+    const monthNum = new Date(`${month} 1, 2000`).getMonth();
+    let hour24 = parseInt(hour);
+    if (ampm.toUpperCase() === 'PM' && hour24 !== 12) hour24 += 12;
+    if (ampm.toUpperCase() === 'AM' && hour24 === 12) hour24 = 0;
+    
+    startDate = new Date(currentYear, monthNum, parseInt(day), hour24, parseInt(minute));
+    endDate = new Date(startDate.getTime() + (3 * 60 * 60 * 1000)); // 3 hours duration
+  } else {
+    // Fallback if date parsing fails
+    startDate = new Date();
+    endDate = new Date(startDate.getTime() + (3 * 60 * 60 * 1000));
+  }
+  
+  const formatDate = (date) => {
+    return date.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+  };
+  
+  const title = encodeURIComponent(`${childName}'s ${birthdayType}`);
+  const details = encodeURIComponent(`Join us for ${childName}'s amazing ${birthdayType}! Food, games, and lots of fun awaits!`);
+  const location = encodeURIComponent(address);
+  
+  return `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${formatDate(startDate)}/${formatDate(endDate)}&details=${details}&location=${location}`;
+}
 import left1 from './assets/left1_left.png'
 import left2 from './assets/left2_left.png'
 import left3 from './assets/left3_left.png'
@@ -49,7 +94,20 @@ document.querySelector('#app').innerHTML = `
       <p class="join-us">${getText('joinUs')}</p>
       <p class="dino-spa">${getText('amazingDay')}</p>
       <p class="date-time">${getEventDate()}</p>
-      <p class="address">${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}</p>
+      <a href="${createGoogleMapsLink(`${import.meta.env.VITE_ADDRESS_LINE1}, ${import.meta.env.VITE_ADDRESS_LINE2}`)}" 
+         target="_blank" 
+         rel="noopener noreferrer" 
+         class="address address-link">
+        ${import.meta.env.VITE_ADDRESS_LINE1}<br />${import.meta.env.VITE_ADDRESS_LINE2}
+      </a>
+      <div class="calendar-section">
+        <a href="${createGoogleCalendarLink()}" 
+           target="_blank" 
+           rel="noopener noreferrer" 
+           class="calendar-link">
+          📅 ${getText('addToCalendar')}
+        </a>
+      </div>
       <div class="features">${getText('features')}</div>
     </div>
     <div class="dino-row dino-bottom">
